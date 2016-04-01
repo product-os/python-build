@@ -9,23 +9,23 @@ do
 		base_version=${PYTHON_VERSION%.*}
 		case "$ARCH" in
 			'armv6hf')
-				sed -e s~#{FROM}~resin/rpi-raspbian:latest~g Dockerfile.debian.tpl > Dockerfile
+				sed -e s~#{FROM}~resin/rpi-raspbian:wheezy~g Dockerfile.debian.tpl > Dockerfile
 				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'armv7hf')
-				sed -e s~#{FROM}~resin/armv7hf-debian:latest~g Dockerfile.debian.tpl > Dockerfile
+				sed -e s~#{FROM}~resin/armv7hf-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
 				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'armel')
-				sed -e s~#{FROM}~resin/armel-debian:latest~g Dockerfile.debian.tpl > Dockerfile
+				sed -e s~#{FROM}~resin/armel-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
 				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'i386')
-				sed -e s~#{FROM}~resin/i386-debian:latest~g Dockerfile.debian.tpl > Dockerfile
+				sed -e s~#{FROM}~resin/i386-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
 				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'amd64')
-				sed -e s~#{FROM}~resin/amd64-debian:latest~g Dockerfile.debian.tpl > Dockerfile
+				sed -e s~#{FROM}~resin/amd64-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
 				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'alpine-armhf')

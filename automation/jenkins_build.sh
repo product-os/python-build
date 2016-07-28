@@ -40,6 +40,10 @@ do
 				sed -e s~#{FROM}~resin/amd64-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
 				sed -e s~#{ALPINE_ONLY}~"paxmark -zm /python/usr/local/bin/python$base_version"~g build.tpl > build.sh
 			;;
+			'fedora-armhf')
+				sed -e s~#{FROM}~resin/armhf-fedora:24~g Dockerfile.fedora.tpl > Dockerfile
+				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
+			;;
 		esac
 		chmod +x build.sh
 		docker build -t python-$ARCH-builder .

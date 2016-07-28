@@ -42,7 +42,7 @@ do
 			;;
 		esac
 		chmod +x build.sh
-		docker build --no-cache=true -t python-$ARCH-builder .
+		docker build -t python-$ARCH-builder .
 		
 		docker run --rm -e ARCH=$ARCH \
 						-e ACCESS_KEY=$ACCESS_KEY \
@@ -50,3 +50,6 @@ do
 						-e BUCKET_NAME=$BUCKET_NAME python-$ARCH-builder bash build.sh $PYTHON_VERSION
 	done
 done
+
+# Clean up after every run
+docker rmi -f python-$ARCH-builder

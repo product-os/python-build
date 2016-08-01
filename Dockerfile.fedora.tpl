@@ -1,21 +1,23 @@
 FROM #{FROM}
 
-RUN set -x \
-	&& buildDeps=' \
+RUN dnf install -y \
+		bzip2-devel \
+		ca-certificates \
 		curl \
 		gcc \
-		bzip2-devel \
 		glibc-devel \
+		gnupg \
+		libsqlite3x-devel \
+		make \
 		ncurses-devel \
 		readline-devel \
-		sqlite-devel libsqlite3x-devel \
+		sqlite-devel \
 		openssl-devel \
-		make \
 		xz \
 		zlib-devel \
-		python-devel python3-devel ca-certificates gnupg \
-	' \
-	&& dnf install -y $buildDeps && dnf clean all
+		python-devel \
+		python3-devel \
+	&& dnf clean all
 
 # Install AWS CLI
 RUN pip install awscli

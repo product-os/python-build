@@ -40,9 +40,13 @@ do
 				sed -e s~#{FROM}~resin/amd64-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
 				sed -e s~#{ALPINE_ONLY}~"paxmark -zm /python/usr/local/bin/python$base_version"~g build.tpl > build.sh
 			;;
+			'fedora-armhf')
+				sed -e s~#{FROM}~resin/armhf-fedora:24~g Dockerfile.fedora.tpl > Dockerfile
+				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
+			;;
 		esac
 		chmod +x build.sh
-		docker build --no-cache=true -t python-$ARCH-builder .
+		docker build -t python-$ARCH-builder .
 		
 		docker run --rm -e ARCH=$ARCH \
 						-e ACCESS_KEY=$ACCESS_KEY \
@@ -50,3 +54,6 @@ do
 						-e BUCKET_NAME=$BUCKET_NAME python-$ARCH-builder bash build.sh $PYTHON_VERSION
 	done
 done
+
+# Clean up after every run
+docker rmi -f python-$ARCH-builder

@@ -18,6 +18,13 @@ gpg --verify python.tar.xz.asc
 tar -xJC /usr/src/python --strip-components=1 -f python.tar.xz
 rm python.tar.xz*
 cd /usr/src/python
+
+# this patch also works for v3.3.6
+# https://github.com/coreos/coreos-overlay/blob/master/dev-lang/python-oem/files/python-2.7-aarch64-fix.patch
+if [ $ARCH == "aarch64" ] && [ $PYTHON_VERSION == "3.3.6" ]; then
+	patch -p1 < /patches/$ARCH-$PYTHON_VERSION.patch
+fi
+
 ./configure --enable-shared --enable-unicode=ucs4
 make -j$(nproc)
 make -j$(nproc) DESTDIR="/python" install

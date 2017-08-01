@@ -30,7 +30,6 @@ fi
 ./configure --enable-shared --enable-unicode=ucs4
 make -j$(nproc)
 make -j$(nproc) DESTDIR="/python" install
-#{ALPINE_ONLY}
 cd /
 tar -cvzf $TAR_FILE python/*
 

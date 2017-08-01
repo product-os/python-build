@@ -10,51 +10,39 @@ do
 		case "$ARCH" in
 			'armv6hf')
 				sed -e s~#{FROM}~resin/rpi-raspbian:wheezy~g Dockerfile.debian.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'armv7hf')
 				sed -e s~#{FROM}~resin/armv7hf-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'armel')
 				sed -e s~#{FROM}~resin/armel-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'aarch64')
 				sed -e s~#{FROM}~resin/aarch64-debian:latest~g Dockerfile.debian.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'i386')
 				sed -e s~#{FROM}~resin/i386-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'amd64')
 				sed -e s~#{FROM}~resin/amd64-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'alpine-armhf')
 				sed -e s~#{FROM}~resin/armhf-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~"paxmark -zm /python/usr/local/bin/python$base_version"~g build.tpl > build.sh
 			;;
 			'alpine-i386')
 				sed -e s~#{FROM}~resin/i386-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~"paxmark -zm /python/usr/local/bin/python$base_version"~g build.tpl > build.sh
 			;;
 			'alpine-amd64')
 				sed -e s~#{FROM}~resin/amd64-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~"paxmark -zm /python/usr/local/bin/python$base_version"~g build.tpl > build.sh
 			;;
 			'alpine-aarch64')
 				sed -e s~#{FROM}~resin/aarch64-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'fedora-armhf')
 				sed -e s~#{FROM}~resin/armhf-fedora:24~g Dockerfile.fedora.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 			'fedora-aarch64')
 				sed -e s~#{FROM}~resin/aarch64-fedora:24~g Dockerfile.fedora.tpl > Dockerfile
-				sed -e s~#{ALPINE_ONLY}~''~g build.tpl > build.sh
 			;;
 		esac
 		chmod +x build.sh

@@ -17,6 +17,7 @@ RUN set -x \
 		bzip2-dev \
 		gdbm-dev \
 		libffi-dev \
+		xz-dev \
 		linux-headers \
 		paxmark \
 		py-pip \

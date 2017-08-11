@@ -10,6 +10,7 @@ RUN set -x \
 		libreadline-dev \
 		libsqlite3-dev \
 		libssl-dev \
+		liblzma-dev \
 		make \
 		xz-utils \
 		zlib1g-dev \

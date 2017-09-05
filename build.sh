@@ -21,10 +21,11 @@ tar -xJC /usr/src/python --strip-components=1 -f python.tar.xz
 rm python.tar.xz*
 cd /usr/src/python
 
-# this patch also works for v3.3.6
+# this patch also works for v3.3.x
 # https://github.com/coreos/coreos-overlay/blob/master/dev-lang/python-oem/files/python-2.7-aarch64-fix.patch
-if [ $ARCH == "aarch64" ] && [ $PYTHON_VERSION == "3.3.6" ]; then
-	patch -p1 < /patches/$ARCH-$PYTHON_VERSION.patch
+PYTHON_BASE_VERSION=$(expr match "$PYTHON_VERSION" '\([0-9]*\.[0-9]*\)')
+if [[ $ARCH == *"aarch64"* ]] && [ $PYTHON_BASE_VERSION == "3.3" ]; then
+	patch -p1 < /patches/aarch64-3.3.patch
 fi
 
 ./configure --enable-shared --enable-unicode=ucs4

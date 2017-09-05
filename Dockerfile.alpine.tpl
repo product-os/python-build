@@ -29,4 +29,4 @@ RUN set -x \
 # Install AWS CLI
 RUN pip install awscli
 
-COPY build.sh /
+COPY . /

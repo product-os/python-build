@@ -22,4 +22,4 @@ RUN dnf install -y \
 # Install AWS CLI
 RUN pip install awscli
 
-COPY build.sh /
+COPY . /

@@ -14,11 +14,11 @@ RUN set -x \
 		make \
 		xz-utils \
 		zlib1g-dev \
-		python python-dev python-pip ca-certificates \
+		python python-dev python-pip ca-certificates patch \
 	' \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 # Install AWS CLI
 RUN pip install awscli
 
-COPY build.sh /
+COPY . /

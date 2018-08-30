@@ -11,6 +11,7 @@ RUN set -x \
 		libsqlite3-dev \
 		libssl-dev \
 		liblzma-dev \
+		libffi-dev \
 		make \
 		xz-utils \
 		zlib1g-dev \

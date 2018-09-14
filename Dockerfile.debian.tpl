@@ -15,7 +15,7 @@ RUN set -x \
 		make \
 		xz-utils \
 		zlib1g-dev \
-		python python-dev python-pip ca-certificates patch \
+		python python-dev python-pip python-setuptools ca-certificates patch \
 	' \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/*
 

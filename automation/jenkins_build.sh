@@ -1,57 +1,70 @@
 #!/bin/bash
 
-# Jenkins build steps
+function version_ge() { test "$(echo "$@" | tr " " "\n" | sort -V | tail -n 1)" == "$1"; }
 
+# Jenkins build steps
 for ARCH in $ARCHS
 do
 	for PYTHON_VERSION in $PYTHON_VERSIONS
 	do
 		base_version=${PYTHON_VERSION%.*}
+		alpine_tag='latest'
+		if ( version_ge $base_version "3.7" ); then
+			debian_tag='stretch'
+		else
+			debian_tag='jessie'
+		fi
+
 		case "$ARCH" in
 			'armv6hf')
-				sed -e s~#{FROM}~resin/rpi-raspbian:wheezy~g Dockerfile.debian.tpl > Dockerfile
+				base_image="resin/rpi-raspbian:$debian_tag"
+				template='Dockerfile.debian.tpl'
 			;;
 			'armv7hf')
-				sed -e s~#{FROM}~resin/armv7hf-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
+				base_image="resin/armv7hf-debian:$debian_tag"
+				template='Dockerfile.debian.tpl'
 			;;
 			'armel')
-				sed -e s~#{FROM}~resin/armel-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
+				base_image="resin/armel-debian:$debian_tag"
+				template='Dockerfile.debian.tpl'
 			;;
 			'aarch64')
-				sed -e s~#{FROM}~resin/aarch64-debian:latest~g Dockerfile.debian.tpl > Dockerfile
+				base_image="resin/aarch64-debian:$debian_tag"
+				template='Dockerfile.debian.tpl'
 			;;
 			'i386')
-				sed -e s~#{FROM}~resin/i386-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
+				base_image="resin/i386-debian:$debian_tag"
+				template='Dockerfile.debian.tpl'
 			;;
 			'amd64')
-				sed -e s~#{FROM}~resin/amd64-debian:wheezy~g Dockerfile.debian.tpl > Dockerfile
+				base_image="resin/amd64-debian:$debian_tag"
+				template='Dockerfile.debian.tpl'
 			;;
 			'alpine-armhf')
-				sed -e s~#{FROM}~resin/armhf-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
+				base_image="resin/armv7hf-alpine:$alpine_tag"
+				template='Dockerfile.alpine.tpl'
 			;;
 			'alpine-i386')
-				sed -e s~#{FROM}~resin/i386-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
+				base_image="resin/i386-alpine:$alpine_tag"
+				template='Dockerfile.alpine.tpl'
 			;;
 			'alpine-amd64')
-				sed -e s~#{FROM}~resin/amd64-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
+				base_image="resin/amd64-alpine:$alpine_tag"
+				template='Dockerfile.alpine.tpl'
 			;;
 			'alpine-aarch64')
-				sed -e s~#{FROM}~resin/aarch64-alpine:latest~g Dockerfile.alpine.tpl > Dockerfile
-			;;
-			'fedora-armhf')
-				sed -e s~#{FROM}~resin/armhf-fedora:24~g Dockerfile.fedora.tpl > Dockerfile
-			;;
-			'fedora-aarch64')
-				sed -e s~#{FROM}~resin/aarch64-fedora:24~g Dockerfile.fedora.tpl > Dockerfile
+				base_image="resin/aarch64-alpine:$alpine_tag"
+				template='Dockerfile.alpine.tpl'
 			;;
 		esac
+		sed -e s~#{FROM}~$base_image~g $template > Dockerfile
 		chmod +x build.sh
 		docker build -t python-$ARCH-builder .
 		
 		docker run --rm -e ARCH=$ARCH \
 						-e ACCESS_KEY=$ACCESS_KEY \
 						-e SECRET_KEY=$SECRET_KEY \
-						-e BUCKET_NAME=$BUCKET_NAME python-$ARCH-builder bash build.sh $PYTHON_VERSION
+						-e BUCKET_NAME=$BUCKET_NAME python-$ARCH-builder bash -x build.sh $PYTHON_VERSION
 	done
 done
 

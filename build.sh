@@ -1,22 +1,35 @@
 #!/bin/bash
-set -e
-set -o pipefail
 
-gpg --keyserver ha.pool.sks-keyservers.net --recv-keys C01E1CAD5EA2C4F0B8E3571504C367C218ADD4FF
-gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 26DEA9D4613391EF3E25C9FF0A5B101836580288
-gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 97FC712E4C024BBEA48A61ED3A5CA953F73C700D
-gpg --keyserver ha.pool.sks-keyservers.net --recv-keys 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
+gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys C01E1CAD5EA2C4F0B8E3571504C367C218ADD4FF
+gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys 26DEA9D4613391EF3E25C9FF0A5B101836580288
+gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys 97FC712E4C024BBEA48A61ED3A5CA953F73C700D
+gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 
 
 # set env var
 PYTHON_VERSION=$1
-TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH.tar.gz
+TAR_FILE=
 BUCKET_NAME=$BUCKET_NAME
+OS=$(. /etc/os-release; printf '%s\n' "$ID")
+OS_VERSION=$(. /etc/os-release; printf '%s\n' "$VERSION_ID")
+
+if [ $OS != "alpine" ]; then
+	if [ $OS_VERSION == "8" ]; then
+		# Debian Jessie
+		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-openssl1.0.tar.gz
+	else
+		# Debian Stretch
+		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-openssl1.1.tar.gz
+	fi
+else
+	TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH.tar.gz
+fi
+
 
 mkdir -p /usr/src/python
 curl -SL "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" -o python.tar.xz
 curl -SL "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc" -o python.tar.xz.asc
-gpg --verify python.tar.xz.asc
+gpg --batch --verify python.tar.xz.asc python.tar.xz
 tar -xJC /usr/src/python --strip-components=1 -f python.tar.xz
 rm python.tar.xz*
 cd /usr/src/python

@@ -41,8 +41,8 @@ do
 				base_image="balenalib/amd64-debian:$debian_tag"
 				template='Dockerfile.debian.tpl'
 			;;
-			'alpine-armhf')
-				base_image="balenalib/armv7hf-alpine:$alpine_tag"
+			'alpine-armv6hf')
+				base_image="balenalib/rpi-alpine:$alpine_tag"
 				template='Dockerfile.alpine.tpl'
 			;;
 			'alpine-i386')
@@ -55,6 +55,10 @@ do
 			;;
 			'alpine-aarch64')
 				base_image="balenalib/aarch64-alpine:$alpine_tag"
+				template='Dockerfile.alpine.tpl'
+			;;
+			'alpine-armv7hf')
+				base_image="balenalib/armv7hf-alpine:$alpine_tag"
 				template='Dockerfile.alpine.tpl'
 			;;
 		esac

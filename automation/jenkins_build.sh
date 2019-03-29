@@ -9,7 +9,8 @@ do
 	do
 		base_version=${PYTHON_VERSION%.*}
 		alpine_tag='latest'
-		if ( version_ge $base_version "3.7" ); then
+		# Must set DEBIAN_BUILD_TAG if want to build from Debian jessie
+		if [ -z "$DEBIAN_BUILD_TAG" ]; then
 			debian_tag='stretch'
 		else
 			debian_tag='jessie'
@@ -17,43 +18,47 @@ do
 
 		case "$ARCH" in
 			'armv6hf')
-				base_image="resin/rpi-raspbian:$debian_tag"
+				base_image="balenalib/rpi-raspbian:$debian_tag"
 				template='Dockerfile.debian.tpl'
 			;;
 			'armv7hf')
-				base_image="resin/armv7hf-debian:$debian_tag"
+				base_image="balenalib/armv7hf-debian:$debian_tag"
 				template='Dockerfile.debian.tpl'
 			;;
 			'armel')
-				base_image="resin/armel-debian:$debian_tag"
+				base_image="balenalib/armv5e-debian:$debian_tag"
 				template='Dockerfile.debian.tpl'
 			;;
 			'aarch64')
-				base_image="resin/aarch64-debian:$debian_tag"
+				base_image="balenalib/aarch64-debian:$debian_tag"
 				template='Dockerfile.debian.tpl'
 			;;
 			'i386')
-				base_image="resin/i386-debian:$debian_tag"
+				base_image="balenalib/i386-debian:$debian_tag"
 				template='Dockerfile.debian.tpl'
 			;;
 			'amd64')
-				base_image="resin/amd64-debian:$debian_tag"
+				base_image="balenalib/amd64-debian:$debian_tag"
 				template='Dockerfile.debian.tpl'
 			;;
-			'alpine-armhf')
-				base_image="resin/armv7hf-alpine:$alpine_tag"
+			'alpine-armv6hf')
+				base_image="balenalib/rpi-alpine:$alpine_tag"
 				template='Dockerfile.alpine.tpl'
 			;;
 			'alpine-i386')
-				base_image="resin/i386-alpine:$alpine_tag"
+				base_image="balenalib/i386-alpine:$alpine_tag"
 				template='Dockerfile.alpine.tpl'
 			;;
 			'alpine-amd64')
-				base_image="resin/amd64-alpine:$alpine_tag"
+				base_image="balenalib/amd64-alpine:$alpine_tag"
 				template='Dockerfile.alpine.tpl'
 			;;
 			'alpine-aarch64')
-				base_image="resin/aarch64-alpine:$alpine_tag"
+				base_image="balenalib/aarch64-alpine:$alpine_tag"
+				template='Dockerfile.alpine.tpl'
+			;;
+			'alpine-armv7hf')
+				base_image="balenalib/armv7hf-alpine:$alpine_tag"
 				template='Dockerfile.alpine.tpl'
 			;;
 		esac

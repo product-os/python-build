@@ -22,7 +22,12 @@ if [ $OS != "alpine" ]; then
 		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-openssl1.1.tar.gz
 	fi
 else
-	TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH.tar.gz
+	OS_VERSION=$(expr match "$OS_VERSION" '\([0-9]*\.[0-9]*\)')
+	if [ $OS_VERSION == "3.8" ]; then
+		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-openssl1.0.tar.gz
+	else
+		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-openssl1.1.tar.gz
+	fi
 fi
 
 

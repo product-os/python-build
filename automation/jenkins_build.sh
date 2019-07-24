@@ -8,12 +8,18 @@ do
 	for PYTHON_VERSION in $PYTHON_VERSIONS
 	do
 		base_version=${PYTHON_VERSION%.*}
-		alpine_tag='latest'
-		# Must set DEBIAN_BUILD_TAG if want to build from Debian jessie
+		# Must set DEBIAN_BUILD_TAG if want to build from Debian Jessie (for OpenSSL 1.0)
 		if [ -z "$DEBIAN_BUILD_TAG" ]; then
 			debian_tag='stretch'
 		else
 			debian_tag='jessie'
+		fi
+
+		# Must set ALPINE_BUILD_TAG if want to build from Alpine Linux 3.8 (for OpenSSL 1.0)
+		if [ -z "$ALPINE_BUILD_TAG" ]; then
+			alpine_tag='latest'
+		else
+			alpine_tag='3.8'
 		fi
 
 		case "$ARCH" in

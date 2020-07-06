@@ -2,6 +2,7 @@ FROM #{FROM}
 
 RUN set -x \
 	&& buildDeps=' \
+		bluez-dev \
 		curl \
 		gcc \
 		libbz2 \

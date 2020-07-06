@@ -5,6 +5,7 @@ RUN set -x \
 		curl \
 		gcc \
 		libbz2-dev \
+		libbluetooth-dev \
 		libc6-dev \
 		libncurses-dev \
 		libreadline-dev \

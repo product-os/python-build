@@ -14,19 +14,19 @@ OS=$(. /etc/os-release; printf '%s\n' "$ID")
 OS_VERSION=$(. /etc/os-release; printf '%s\n' "$VERSION_ID")
 
 if [ $OS != "alpine" ]; then
-	if [ $OS_VERSION == "8" ]; then
-		# Debian Jessie
-		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-openssl1.0.tar.gz
+	if [ $OS_VERSION == "10" ]; then
+		# Debian Buster
+		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.2.tar.gz
 	else
-		# Debian Stretch
-		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-openssl1.1.tar.gz
+		# Debian Bullseye
+		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.3.tar.gz
 	fi
 else
 	OS_VERSION=$(expr match "$OS_VERSION" '\([0-9]*\.[0-9]*\)')
-	if [ $OS_VERSION == "3.8" ]; then
-		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-openssl1.0.tar.gz
+	if [ $OS_VERSION == "3.11" ]; then
+		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.2.tar.gz
 	else
-		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-openssl1.1.tar.gz
+		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.3.tar.gz
 	fi
 fi
 

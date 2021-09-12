@@ -11,8 +11,10 @@ do
 		# Must set DEBIAN_BUILD_TAG if want to build from Debian Buster (for libffi 3.2)
 		if [ -z "$DEBIAN_BUILD_TAG" ]; then
 			debian_tag='buster'
+			template='Dockerfile.debian.tpl'
 		else
 			debian_tag='bullseye'
+			template='Dockerfile.debian.python3.tpl'
 		fi
 
 		# Must set ALPINE_BUILD_TAG if want to build from Alpine Linux 3.11 (for libffi 3.2)
@@ -25,27 +27,21 @@ do
 		case "$ARCH" in
 			'armv6hf')
 				base_image="balenalib/rpi-raspbian:$debian_tag"
-				template='Dockerfile.debian.tpl'
 			;;
 			'armv7hf')
 				base_image="balenalib/armv7hf-debian:$debian_tag"
-				template='Dockerfile.debian.tpl'
 			;;
 			'armel')
 				base_image="balenalib/armv5e-debian:$debian_tag"
-				template='Dockerfile.debian.tpl'
 			;;
 			'aarch64')
 				base_image="balenalib/aarch64-debian:$debian_tag"
-				template='Dockerfile.debian.tpl'
 			;;
 			'i386')
 				base_image="balenalib/i386-debian:$debian_tag"
-				template='Dockerfile.debian.tpl'
 			;;
 			'amd64')
 				base_image="balenalib/amd64-debian:$debian_tag"
-				template='Dockerfile.debian.tpl'
 			;;
 			'alpine-armv6hf')
 				base_image="balenalib/rpi-alpine:$alpine_tag"

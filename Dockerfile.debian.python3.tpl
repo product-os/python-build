@@ -10,6 +10,8 @@ RUN set -x \
 		libncurses-dev \
 		libreadline-dev \
 		libsqlite3-dev \
+		tk-dev \
+		tcl-dev \
 		libssl-dev \
 		liblzma-dev \
 		libffi-dev \

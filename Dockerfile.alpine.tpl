@@ -13,6 +13,8 @@ RUN set -x \
 		openssl-dev \
 		make \
 		xz \
+		tk-dev \
+		tcl-dev \
 		zlib-dev \
 		ncurses-dev \
 		bzip2-dev \

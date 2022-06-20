@@ -14,22 +14,37 @@ OS=$(. /etc/os-release; printf '%s\n' "$ID")
 OS_VERSION=$(. /etc/os-release; printf '%s\n' "$VERSION_ID")
 
 if [ $OS != "alpine" ]; then
-	if [ $OS_VERSION == "10" ]; then
-		# Debian Buster
-		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.2.tar.gz
-	else
-		# Debian Bullseye
-		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.3.tar.gz
-	fi
+	case $OS_VERSION in
+		'10')
+			# Debian buster - libffi 3.2
+			TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.2.tar.gz
+			;;
+		'11')
+			# Debian bullseye - libffi 3.3
+			TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.3.tar.gz
+			;;
+		*)
+			# Debian bookworm - libffi 3.4
+			TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.4.tar.gz
+			;;
+	esac
 else
 	OS_VERSION=$(expr match "$OS_VERSION" '\([0-9]*\.[0-9]*\)')
-	if [ $OS_VERSION == "3.11" ]; then
-		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.2.tar.gz
-	else
-		TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.3.tar.gz
-	fi
+	case $OS_VERSION in
+		'3.11')
+			# Alpine linux 3.11 - libffi 3.2
+			TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.2.tar.gz
+			;;
+		'3.13')
+			# Alpine linux 3.13 - libffi 3.3
+			TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.3.tar.gz
+			;;
+		*)
+			# Alpine linux 3.15 - libffi 3.4
+			TAR_FILE=Python-$PYTHON_VERSION.linux-$ARCH-libffi3.4.tar.gz
+			;;
+	esac
 fi
-
 
 mkdir -p /usr/src/python
 curl -SL "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" -o python.tar.xz

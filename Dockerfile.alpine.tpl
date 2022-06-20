@@ -7,7 +7,7 @@ RUN set -x \
 		gcc \
 		libbz2 \
 		musl-dev \
-		ncurses5-libs \
+		ncurses-libs \
 		readline-dev \
 		sqlite-dev \
 		openssl-dev \
@@ -22,7 +22,6 @@ RUN set -x \
 		libffi-dev \
 		xz-dev \
 		linux-headers \
-		paxmark \
 		py-pip \
 		gnupg \
 		coreutils \

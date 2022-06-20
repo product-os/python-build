@@ -8,21 +8,38 @@ do
 	for PYTHON_VERSION in $PYTHON_VERSIONS
 	do
 		base_version=${PYTHON_VERSION%.*}
-		# Must set DEBIAN_BUILD_TAG if want to build from Debian Buster (for libffi 3.2)
-		if [ -z "$DEBIAN_BUILD_TAG" ]; then
-			debian_tag='buster'
-			template='Dockerfile.debian.tpl'
-		else
-			debian_tag='bullseye'
-			template='Dockerfile.debian.python3.tpl'
-		fi
 
-		# Must set ALPINE_BUILD_TAG if want to build from Alpine Linux 3.11 (for libffi 3.2)
-		if [ -z "$ALPINE_BUILD_TAG" ]; then
-			alpine_tag='3.13'
-		else
-			alpine_tag='3.11'
-		fi
+		case $DEBIAN_BUILD_TAG in
+			'buster')
+				# Debian buster - libffi 3.2
+				debian_tag='buster'
+				;;
+			'bullseye')
+				# Debian bullseye - libffi 3.3
+				debian_tag='bullseye'
+				;;
+			*)
+				# Debian bookworm - libffi 3.4
+				debian_tag='bookworm'
+				;;
+		esac
+
+		case $ALPINE_BUILD_TAG in
+			'3.11')
+				# Alpine linux 3.11 - libffi 3.2
+				alpine_tag='3.11'
+				;;
+			'3.13')
+				# Alpine linux 3.13 - libffi 3.3
+				alpine_tag='3.13'
+				;;
+			*)
+				# Alpine linux 3.15 - libffi 3.4
+				alpine_tag='3.15'
+				;;
+		esac
+
+		template='Dockerfile.debian.python3.tpl'
 
 		case "$ARCH" in
 			'armv6hf')

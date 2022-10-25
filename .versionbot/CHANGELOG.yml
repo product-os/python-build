@@ -1,4 +1,18 @@
 - commits:
+    - subject: Fix pip command in Dockerfile for Debian
+      hash: 73885ccadfa2b577955efb4222ad417409db730c
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 0.0.10
+  title: ""
+  date: 2022-10-25T17:44:46.237Z
+- commits:
     - subject: Switch from balenaCI to flowzone
       hash: 4dc8f133873072f762cf9c2e2f4ab0b2b61f1dab
       body: ""

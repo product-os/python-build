@@ -1,0 +1,311 @@
+- commits:
+    - subject: Switch from balenaCI to flowzone
+      hash: 4dc8f133873072f762cf9c2e2f4ab0b2b61f1dab
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+        Signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      author: Trong Nghia Nguyen
+      nested: []
+  version: 0.0.9
+  title: ""
+  date: 2022-10-25T17:41:16.226Z
+- version: 0.0.8
+  date: 2022-06-20T05:11:41Z
+  commits:
+    - hash: 59c3d7bed8cf4c5f4de661049a2ba6f913ad4e9c
+      author: Trong Nghia Nguyen
+      footers:
+        change-type: patch
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+      subject: Update jenkinsfile
+      body: null
+- version: 0.0.7
+- date: 2022-06-20T04:49:43Z
+- commits:
+    - hash: 2543b71735eab27ffe48a684a6557977fa670613
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: Support libffi3.4 on some latest releases
+- commits:
+    - body: null
+- version: 0.0.6
+- date: 2022-06-11T10:23:42Z
+- commits:
+    - hash: 2c8ea09becd0c6a3be1cd7dfa545d2cad18f8a2a
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: Add tk/tcl dev packages
+- commits:
+    - body: user reported that tkinter modules is missing in balenalib base images
+- version: 0.0.5
+- date: 2021-09-12T04:49:02Z
+- commits:
+    - hash: c6d52977e49bcd76b9bc0515e6428d3c121d18d6
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: Add Debian dockerfile template for python3 dependencies
+- commits:
+    - body: null
+- version: 0.0.4
+- date: 2021-09-08T18:34:43Z
+- commits:
+    - hash: f86dac1afc003e91d54b46847985e819d5fb539f
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: Add DEBIAN_BUILD_TAG and ALPINE_BUILD_TAG to build parameters
+- commits:
+    - body: To set the release for the build
+- version: 0.0.3
+- date: 2021-09-08T18:22:03Z
+- commits:
+    - hash: 77aff53cb74923a675c1aea28ec1ff7db0195f2d
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: Add Python build variants for libffi v3.2 and v3.3
+- commits:
+    - body: >-
+        Drop build variant for openssl since all supported releases are now using
+        openssl1.1
+
+        Add build variant for libffi since some releases use 3.2 while newer ones use 3.3
+- version: 0.0.2
+- date: 2021-05-07T18:32:33Z
+- commits:
+    - hash: 556860acfae13ed2c6e8c58ec767cc04baa86588
+- commits:
+    - author: ab77
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - subject: Adds Jenkinsfile
+- commits:
+    - body: |-
+        * allows auto-discovery of job via Jenkins GH scan
+        * adds balenaCI repo type
+- commits:
+    - hash: 6aeb9396e5cb22e944233e0e775ab37dd3913b8c
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: Add bluetooth dependency to support socket AF_BLUETOOTH
+- commits:
+    - body: >-
+        Fixes https://github.com/balena-io-library/base-images/issues/641.
+
+        Python should be compiled with libbluetooth, otherwise it cannot access
+
+        the AF_BLUETOOTH socket. This feature is in the official images (see https://github.com/docker-library/python/pull/445) so we should support it too.
+- commits:
+    - hash: 34514752f5cf75802280d7dadfbdf5976e1e7073
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: "build: Set different file name for binary built from Debian Jessie and
+        Stretch"
+- commits:
+    - body: |-
+        binary built from Debian Jessie will be compatible with OpenSSl1.0.x and
+        from Debian Stretch will be compatible with OpenSSL1.1.x
+- commits:
+    - hash: 7ab5844a1dc3fc5b4f997c5296cbfa1c52966b60
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        change-type: patch
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: "alpine: Add support for armv7 Alpine Linux"
+- commits:
+    - body: Since armv7 Alpine Linux is released, the build script is updated to
+        support this architecture
+- commits:
+    - hash: 3cf807d1cca106466a8386f68a8fb5a2b280a4ae
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Merge branch 'master' into master
+- commits:
+    - body: null
+- commits:
+    - hash: b53d7e657a4302323a7680108f830b4a0fd5d5a8
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Use Debian jessie instead of Debian wheezy for python build
+- commits:
+    - body: null
+- commits:
+    - hash: bbe3a272607eccc6b55b817c3531b164629abea3
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: "deps: Add libffi-dev to the dependencies"
+- commits:
+    - body: null
+- commits:
+    - hash: 8a8e8ee6e4a6467b3b6bb2c6084c55f80a9ad225
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - footers:
+        signed-off-by: Trong Nghia Nguyen <nghiant2710@gmail.com>
+- commits:
+    - subject: Update build script to support Python v3.7.0 and higher
+- commits:
+    - body: >-
+        There is a breaking change, since Python v3.7.0, OpenSSL lower than v1.0.2
+        will no longer be supported. It affects Debian Jessie and Ubuntu 14.04
+        and older releases.
+
+        So this PR will update the build script to support this change
+- commits:
+    - hash: 04abfdf1c8f426d631b0394e38e657b66154e9d8
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Merge branch 'master' into master
+- commits:
+    - body: null
+- commits:
+    - hash: c9645bf9051fb41a7248530241b83b5007ceb039
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Rename build.tpl to build.sh
+- commits:
+    - body: null
+- commits:
+    - hash: 25c25e8a3d3e39b4ae882d11ac530e48c37f1772
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Apply the Python 3.3.6 fix for all 3.3.x arch64 builds
+- commits:
+    - body: null
+- commits:
+    - hash: 2d0611ffd42bf49567e8c76270325b975cba4b07
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Add build info for aarch64 alpine
+- commits:
+    - body: null
+- commits:
+    - hash: fca557147a5f9278aed67271c5248b22894872e2
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Remove paxmark for Alpine Linux when building python binaries
+- commits:
+    - body: null
+- commits:
+    - hash: 0896eb0c85c91c91f6c3b4bbece556d027e44670
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Add missing build dependency for lzma module
+- commits:
+    - body: null
+- commits:
+    - hash: 9db57b698708ebd8fa4a254be7e44fa7b8917bf8
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Add key for Python v3.6.x
+- commits:
+    - body: null
+- commits:
+    - hash: 7a16abedb58f374d7d051dd70abb4ebeed754512
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Add build info for aarch64
+- commits:
+    - body: null
+- commits:
+    - hash: b0156ce3148cb9634659c7a018d000ce3ba8da7e
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Clean up builder base image after every run
+- commits:
+    - body: null
+- commits:
+    - hash: 3061433e0382f388fe99c1d83e48d880963ffd32
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Add build info for fedora-armhf
+- commits:
+    - body: null
+- commits:
+    - hash: 64d6cbf8b9dfe47b22d6540f9630e464cb805c7f
+- commits:
+    - author: Trong Nghia Nguyen
+- commits:
+    - subject: Updating comments
+- commits:
+    - body: null
+- commits:
+    - hash: c75fe73d97b8744dab30d94ca6072a7b6d3a523c
+- commits:
+    - author: James
+- commits:
+    - subject: Change debian base images to wheezy to make sure that binaries will be
+        compatible with wheezy base images
+- commits:
+    - body: null

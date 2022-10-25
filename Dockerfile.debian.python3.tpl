@@ -23,6 +23,6 @@ RUN set -x \
 	&& apt-get update && apt-get install -y $buildDeps --no-install-recommends && rm -rf /var/lib/apt/lists/*
 
 # Install AWS CLI
-RUN pip install awscli
+RUN pip3 install awscli
 
 COPY . /

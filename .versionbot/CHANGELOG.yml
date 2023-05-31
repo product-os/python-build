@@ -1,4 +1,16 @@
 - commits:
+    - subject: Update flowzone.yml
+      hash: da6c5b54383360277af84ab87aa227d8f6644bc9
+      body: ""
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: Kyle Harding
+      nested: []
+  version: 0.0.11
+  title: ""
+  date: 2023-05-31T15:15:53.306Z
+- commits:
     - subject: Fix pip command in Dockerfile for Debian
       hash: 73885ccadfa2b577955efb4222ad417409db730c
       body: ""
@@ -116,8 +128,8 @@
     - subject: Add Python build variants for libffi v3.2 and v3.3
 - commits:
     - body: >-
-        Drop build variant for openssl since all supported releases are now using
-        openssl1.1
+        Drop build variant for openssl since all supported releases are now
+        using openssl1.1
 
         Add build variant for libffi since some releases use 3.2 while newer ones use 3.3
 - version: 0.0.2
@@ -221,9 +233,9 @@
     - subject: Update build script to support Python v3.7.0 and higher
 - commits:
     - body: >-
-        There is a breaking change, since Python v3.7.0, OpenSSL lower than v1.0.2
-        will no longer be supported. It affects Debian Jessie and Ubuntu 14.04
-        and older releases.
+        There is a breaking change, since Python v3.7.0, OpenSSL lower than
+        v1.0.2 will no longer be supported. It affects Debian Jessie and Ubuntu
+        14.04 and older releases.
 
         So this PR will update the build script to support this change
 - commits:

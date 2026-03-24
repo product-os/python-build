@@ -1,4 +1,17 @@
 - commits:
+    - subject: Pin product-os/flowzone action to a53cf4b
+      hash: 3375d05e83f5450705688e36932fabd807cf4aef
+      body: |
+        Update product-os/flowzone
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 0.0.12
+  title: ""
+  date: 2026-03-24T18:39:41.281Z
+- commits:
     - subject: Update flowzone.yml
       hash: da6c5b54383360277af84ab87aa227d8f6644bc9
       body: ""
@@ -131,7 +144,8 @@
         Drop build variant for openssl since all supported releases are now
         using openssl1.1
 
-        Add build variant for libffi since some releases use 3.2 while newer ones use 3.3
+        Add build variant for libffi since some releases use 3.2 while newer
+        ones use 3.3
 - version: 0.0.2
 - date: 2021-05-07T18:32:33Z
 - commits:
@@ -165,7 +179,9 @@
 
         Python should be compiled with libbluetooth, otherwise it cannot access
 
-        the AF_BLUETOOTH socket. This feature is in the official images (see https://github.com/docker-library/python/pull/445) so we should support it too.
+        the AF_BLUETOOTH socket. This feature is in the official images (see
+        https://github.com/docker-library/python/pull/445) so we should support
+        it too.
 - commits:
     - hash: 34514752f5cf75802280d7dadfbdf5976e1e7073
 - commits:

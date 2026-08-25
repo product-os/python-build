@@ -1,4 +1,17 @@
 - commits:
+    - subject: Update dependency flowzonify to v0.4.0
+      hash: 32246edc8b1bb8f901ab5a477bc031c27b1bafb1
+      body: |
+        Update flowzonify from 0.0.0 to 0.4.0
+      footer:
+        Change-type: patch
+        change-type: patch
+      author: balena-renovate[bot]
+      nested: []
+  version: 0.0.27
+  title: ""
+  date: 2026-08-25T09:31:44.504Z
+- commits:
     - subject: Revert flowzone pinning to master
       hash: c92306b682df9bf91322f83dd3c1b0b9ea801397
       body: ""
